@@ -82,7 +82,7 @@ CLUSTER_CONFIG = {
 
     # Specify the last hostname, so that we can run ansible at the appropriate
     # time. It should match the last host in the list below.
-    :last_hostname => "helm1",
+    :last_hostname => "docker1",
 
     # A hash that keys off of hostname and contains the configuration for each
     # server in the virtual cluster.
@@ -92,12 +92,12 @@ CLUSTER_CONFIG = {
         #     controller -> /mcp[0-9+].*/
         #     hypervisor -> /mcp[0-9+].*/
         #     servicenode -> Any node that is neither a controller nor hypervisor.
-        "helm1" => {
+        "docker1" => {
                 # RAM to allocate for this server.
-                :memory => 8192,
+                :memory => 16384,
 
                 # Number of virtual cpus to allocate for this server.
-                :numcpus => 2,
+                :numcpus => 4,
 
                 # IP address to use for the service interface for this serer. This
                 # will be eth1. eth0 is assigned by vagrant and will be a NAT address
@@ -107,7 +107,7 @@ CLUSTER_CONFIG = {
         },
     },
     :groups => {
-        "all" => ["helm1"],
+        "all" => ["docker1"],
     }
 }
 

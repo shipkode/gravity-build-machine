@@ -26,10 +26,40 @@ At this point, you are ready to get started!
 You now are ready to standup your VM. Type in the commands below:
 
     cd docker-build-machine
-    vagrant up
+    make install
 
 That's it! Now watch as the wonders of automation unfold, and your
 environment and workloads are all setup.
+
+You should see something like this:
+
+    META: ran handlers
+    META: ran handlers
+
+    PLAY RECAP *********************************************************************
+    docker1                    : ok=18   changed=0    unreachable=0    failed=0
+
+    vagrant package --base "docker-build-machine_docker1_1542675441580_28582"
+    ==> docker-build-machine_docker1_1542675441580_28582: Attempting graceful shutdown of VM...
+        docker-build-machine_docker1_1542675441580_28582: Guest communication could not be established! This is usually because
+        docker-build-machine_docker1_1542675441580_28582: SSH is not running, the authentication information was changed,
+        docker-build-machine_docker1_1542675441580_28582: or some other networking issue. Vagrant will force halt, if
+        docker-build-machine_docker1_1542675441580_28582: capable.
+    ==> docker-build-machine_docker1_1542675441580_28582: Forcing shutdown of VM...
+    ==> docker-build-machine_docker1_1542675441580_28582: Clearing any previously set forwarded ports...
+    ==> docker-build-machine_docker1_1542675441580_28582: Exporting VM...
+    ==> docker-build-machine_docker1_1542675441580_28582: Compressing package to: /Users/dlapsley/Documents/repos/docker-build-machine/package.box
+    vagrant box add --force --provider virtualbox --name "shipkode/bionic64_docker-build-machine" "package.box"
+    ==> box: Box file was not detected as metadata. Adding it directly...
+    ==> box: Adding box 'shipkode/bionic64_docker-build-machine' (v0) for provider: virtualbox
+        box: Unpacking necessary files from: file:///Users/dlapsley/Documents/repos/docker-build-machine/package.box
+    ==> box: Successfully added box 'shipkode/bionic64_docker-build-machine' (v0) for 'virtualbox'!
+    MacBook-Pro:docker-build-machine dlapsley$ vagrant box list
+    shipkode/bionic64_docker-build-machine (virtualbox, 0)
+    ubuntu/bionic64                        (virtualbox, 20181018.0.0)
+    MacBook-Pro:docker-build-machine dlapsley$
+
+Congratulations! You now have a docker build box at your disposal :)
 
 ## License
 
