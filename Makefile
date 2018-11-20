@@ -23,3 +23,8 @@ ${BOX_FILE}:	provision
 
 install:	${BOX_FILE}
 	vagrant box add --force --provider virtualbox --name ${BOX_NAME} ${BOX_FILE}
+
+.PHONY:	clean
+clean:
+	rm -f ${BOX_FILE}
+
