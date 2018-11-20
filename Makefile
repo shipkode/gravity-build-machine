@@ -12,7 +12,7 @@ down:
 	vagrant halt
 
 .PHONY:	destroy
-destory:
+destroy:
 	vagrant destroy -f
 
 provision:	up
@@ -24,7 +24,6 @@ ${BOX_FILE}:	provision
 install:	${BOX_FILE}
 	vagrant box add --force --provider virtualbox --name ${BOX_NAME} ${BOX_FILE}
 
-.PHONY:	clean
-clean:
+clean:	destroy
 	rm -f ${BOX_FILE}
 
