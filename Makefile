@@ -7,9 +7,17 @@ BOX_NAME := "shipkode/bionic64_docker-build-machine"
 up:
 	vagrant up
 
+.PHONY:	ssh
+ssh:
+	vagrant ssh
+
 .PHONY:	halt
-down:
+halt:
 	vagrant halt
+
+.PHONY:	status
+status:
+	vagrant status
 
 .PHONY:	destroy
 destroy:

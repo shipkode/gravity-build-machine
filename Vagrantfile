@@ -138,6 +138,8 @@ def provision(cluster_config)
     
         cluster_config[:hosts].each do |hostname, host_config|
             # Loop through each host in cluster_config.
+            # Avoid random key issue (https://github.com/hashicorp/vagrant/issues/5186).
+            config.ssh.insert_key = false
             config.vm.define hostname do |server_conf|
                 # Configure an individual host.
                 server_conf.vm.box = cluster_config[:os]
