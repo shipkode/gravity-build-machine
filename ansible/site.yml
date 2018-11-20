@@ -1,0 +1,22 @@
+---
+- hosts: all
+  remote_user: vagrant
+  sudo: yes
+  environment:
+    PATH: /home/vagrant/.pyenv/bin:{{ ansible_env.PATH }}
+  vars:
+    debug: False
+  roles:
+    - common
+    - role: ahuffman.resolv
+      resolv_nameservers:
+        - 8.8.8.8
+        - 8.8.4.4
+      resolv_domain: shipkode.com
+      resolv_options:
+        - timeout; 2
+        - rotate
+    - role: geerlingguy.docker
+      docker_users:
+        - vagrant
+    - freedomofpress.docker-registry
