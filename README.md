@@ -1,4 +1,10 @@
-# Helm-in-sixty-seconds
+# Docker Build Machine
+
+Automation for creating a docker build box that includes:
+
+* Docker
+* Docker registry
+* Build essentials
 
 ## Getting started
 
