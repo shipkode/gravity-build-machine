@@ -1,0 +1,37 @@
+---
+# From vagrant-provision.yml
+- name: Enable epel-release
+  yum:
+    name: epel-release
+
+- name: Install required packages
+  yum:
+    name: "{{item}}"
+  with_items:
+    - curl
+    - htop
+    - iotop
+    - lsof
+    - ltrace
+    - mc
+    - net-tools
+    - strace
+    - tcpdump
+    - telnet
+    - vim
+    - wget
+    - ntp
+    - traceroute
+    - e4fsprogs
+
+# From docker-build-machine
+- name: Install pre-reqs
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - python-pip
+    - kernel-devel # linux-headers-4.15.0-36-generic
+    - "@Development tools" # build-essential
+    - dkms
+    - unzip

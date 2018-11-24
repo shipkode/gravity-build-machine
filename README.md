@@ -67,6 +67,16 @@ You should see something like this:
 
 Congratulations! You now have a docker build box at your disposal :)
 
+## Deploying on bare metal
+
+You can also leverage all of this auotmation on a bare-metal, pre-provisioned
+server. Make sure you have ssh access to the server, update the inventory file
+ansible/thor\_inventory.example then do the following:
+
+    $ cd ansible
+    $ mv thor_inventory.example my_inventory.txt
+    $ ansible-playbook -i my_inventory.txt site.yml --ask-pass --ask-become-pass
+
 ## License
 
 [Apache Software License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

@@ -1,0 +1,3 @@
+[all]
+# Update this to match your server name and credentials.
+thor    ansible_user=dlapsley   ansible_ssh_private_key_file=/Users/dlapsley/.ssh/id_rsa

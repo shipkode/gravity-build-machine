@@ -1,14 +1,9 @@
 ---
-- name: Install pre-reqs
-  apt:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - python-pip
-    - linux-headers-4.15.0-36-generic
-    - build-essential
-    - dkms
-    - unzip
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
 
 - name: Install python pre-reqs
   pip:
