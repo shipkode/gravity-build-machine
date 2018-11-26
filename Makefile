@@ -32,6 +32,10 @@ ${BOX_FILE}:	provision
 install:	${BOX_FILE}
 	vagrant box add --force --provider virtualbox --name ${BOX_NAME} ${BOX_FILE}
 
+.PHONY:	deploy
+deploy:
+	 ansible-playbook -i ansible/inventory.example ansible/site.yml --ask-pass --ask-become-pass
+
 clean:	destroy
 	rm -f ${BOX_FILE}
 
