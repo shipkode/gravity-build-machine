@@ -55,11 +55,6 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-# Per-role memory and cpu profiles.
-mhv = { :memory => 2048, :numcpus => 2}
-mcp = { :memory => 2048, :numcpus => 4}
-svc = { :memory => 2048, :numcpus => 4}
-
 #------------------------------------------------------------------------------
 # Cluster configuration
 #------------------------------------------------------------------------------
@@ -82,7 +77,7 @@ CLUSTER_CONFIG = {
 
     # Specify the last hostname, so that we can run ansible at the appropriate
     # time. It should match the last host in the list below.
-    :last_hostname => "docker1",
+    :last_hostname => "gravity1",
 
     # A hash that keys off of hostname and contains the configuration for each
     # server in the virtual cluster.
@@ -92,7 +87,7 @@ CLUSTER_CONFIG = {
         #     controller -> /mcp[0-9+].*/
         #     hypervisor -> /mcp[0-9+].*/
         #     servicenode -> Any node that is neither a controller nor hypervisor.
-        "docker1" => {
+        "gravity1" => {
                 # RAM to allocate for this server.
                 :memory => 16384,
 
@@ -107,8 +102,16 @@ CLUSTER_CONFIG = {
         },
     },
     :groups => {
-        "all" => ["docker1"],
-    }
+        "all" => ["gravity1"],
+    },
+    # Change this if you are deploying against bare metal servers to match
+    # your ansible ssh user (user must have sudo access).
+    :docker_users => [
+        "vagrant",
+    ],
+    # Change this if you are deploying against bare metal servers to match
+    # your ansible ssh user (user must have sudo access).
+    :vbox_user => "vagrant",
 }
 
 #------------------------------------------------------------------------------
@@ -210,7 +213,10 @@ def provision(cluster_config)
                 ansible.playbook = cluster_config[:ansible_playbook]
                 ansible.verbose = "vv"
                 # Let vagrant ansible provisioner automatically generate inventory file.
-                ansible.extra_vars = {}
+                ansible.extra_vars = {
+                    'docker_users': cluster_config[:docker_users],
+                    'vbox_user': cluster_config[:vbox_user],
+                }
                 ansible.host_key_checking = false
                 ansible.limit = 'all'
             end

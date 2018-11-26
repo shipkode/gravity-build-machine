@@ -23,9 +23,6 @@
     - role: geerlingguy.docker
       docker_users:
         "{{ docker_users }}"
-        # If you are using a bare metal server, add the ansible user name
-        # here. This use must have sudo privileges.
-        # - dlapsley
     - role: freedomofpress.docker-registry
     - role: devlaps.vagrant
       vbox_user: "{{ vbox_user }}"
