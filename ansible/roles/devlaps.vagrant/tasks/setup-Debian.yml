@@ -5,7 +5,7 @@
 
 - name: Download apt repo keys
   get_url:
-    url: "https://www.virtualbox.org/download/{{ item }}.asc"
+    url: "https://www.virtualbox.org/download/{{ item }}"
     dest: "/home/vagrant/{{ item }}"
     mode: 0644
   loop:
