@@ -7,9 +7,6 @@
     PATH: /home/vagrant/.pyenv/bin:{{ ansible_env.PATH }}
   vars:
     debug: False
-  tasks:
-    - debug:
-      msg: "Input vars:  {{ docker_users }}, {{ vbox_user }}"
   roles:
     - role: devlaps.common
     - role: ahuffman.resolv

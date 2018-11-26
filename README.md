@@ -69,16 +69,34 @@ Congratulations! You now have a docker build box at your disposal :)
 
 ## Deploying on bare metal
 
-You can also leverage all of this auotmation on a bare-metal, pre-provisioned
-server. Make sure you have ssh access to the server, update the inventory file
-ansible/thor\_inventory.example then do the following:
+You can also leverage all of this automation on a bare-metal, pre-provisioned
+server. You will need to do the following:
+
+### Edit ansible/site.yml
+
+You'll need to update your docker and vbox user information. Update the 
+vars section of the file to look something like this:
+
+    vars:
+      debug: False
+      docker_users:
+        - my_ssh_user_name
+      vbox_user: my_ssh_user_name
+
+Where *my_ssh_user_name* is the name of the user that has ssh (and sudo
+access to the baremetal server).
+
+### Update ansible inventory.example
+
+Update the inventory file ansible/inventory.example so that it has your server
+and credential information.
+
+### Deploy!
+
+Now it's time to deploy your server:
 
     $ cd ansible
-    $ mv thor_inventory.example my_inventory.txt
-    $ ansible-playbook -i my_inventory.txt site.yml --ask-pass --ask-become-pass
-
-You will also need to add your username to the list of docker\_users in
-ansible/site.yml.
+    $ make deploy
 
 ## License
 
