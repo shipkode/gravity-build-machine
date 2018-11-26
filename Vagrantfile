@@ -73,7 +73,6 @@ CLUSTER_CONFIG = {
 
     # Specify which provider to use (global).
     :provider => "virtualbox",
-    # :provider => "vmware_fusion",
 
     # Specify the last hostname, so that we can run ansible at the appropriate
     # time. It should match the last host in the list below.
