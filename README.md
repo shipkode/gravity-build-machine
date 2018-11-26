@@ -1,10 +1,17 @@
-# Docker Build Machine
+# Gravity Build Machine
 
 Automation for creating a docker build box that includes:
 
 * Docker
 * Docker registry
 * Build essentials
+
+This automation can be used to build and deploy gravity in
+development configurations.
+
+The automation can be run using vagrant and virtualbox or
+run against a OS-ready bare metal server with ssh and remote sudo
+access.
 
 ## Getting started
 
