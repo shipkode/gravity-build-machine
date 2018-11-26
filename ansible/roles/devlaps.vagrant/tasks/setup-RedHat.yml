@@ -1,0 +1,39 @@
+---
+- name: Enable epel-release
+  yum:
+    name: epel-release
+
+- name: Add Vbox repo
+  get_url:
+    url: http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+    dest: /etc/yum.repos.d/virtualbox.repo
+    mode: 0444
+
+- name: Install packages
+  yum:
+    name: "{{item}}"
+  loop:
+    - gcc
+    - dkms
+    - make
+    - qt
+    - libgomp
+    - patch
+    - kernel-headers
+    - kernel-devel
+    - kernel-devel-3.10.0-862.el7
+    - binutils
+    - glibc-headers
+    - glibc-devel
+    - fontforge
+    - VirtualBox-5.2
+
+- name: Download vagrant RPM
+  get_url:
+    url: https://releases.hashicorp.com/vagrant/2.2.1/vagrant_2.2.1_x86_64.rpm
+    dest: /tmp
+
+- name: Install vagrant
+  yum:
+    name: /tmp/vagrant_2.2.1_x86_64.rpm
+    state: present

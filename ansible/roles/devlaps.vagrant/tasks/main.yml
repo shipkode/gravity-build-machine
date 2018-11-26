@@ -1,0 +1,26 @@
+---
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Load vboxdrv kernel driver
+  become: yes
+  become_user: root
+  shell: |
+    /sbin/vboxconfig
+
+- name: Add user to vbox group
+  user:
+    name: dlapsley
+    groups: vboxusers
+    append: yes
+
+- name: Install ansible
+  pip:
+    name: "{{ item }}"
+  loop:
+    - ansible
+    - netaddr
+
