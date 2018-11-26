@@ -7,6 +7,9 @@
     PATH: /home/vagrant/.pyenv/bin:{{ ansible_env.PATH }}
   vars:
     debug: False
+  tasks:
+    - debug:
+      msg: "Input vars:  {{ docker_users }}, {{ vbox_user }}"
   roles:
     - role: devlaps.common
     - role: ahuffman.resolv
@@ -19,10 +22,10 @@
         - rotate
     - role: geerlingguy.docker
       docker_users:
-        - vagrant
+        "{{ docker_users }}"
         # If you are using a bare metal server, add the ansible user name
         # here. This use must have sudo privileges.
         # - dlapsley
     - role: freedomofpress.docker-registry
     - role: devlaps.vagrant
-      vbox_user: dlapsley
+      vbox_user: "{{ vbox_user }}"
