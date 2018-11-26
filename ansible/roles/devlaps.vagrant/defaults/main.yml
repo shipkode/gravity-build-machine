@@ -1,2 +1,26 @@
 ---
 # defaults file for devlaps.vagrant
+devlaps_vagrant:
+  redhat_packages:
+    - gcc
+    - dkms
+    - make
+    - qt
+    - libgomp
+    - patch
+    - kernel-headers
+    - kernel-devel
+    - kernel-devel-3.10.0-862.el7
+    - binutils
+    - glibc-headers
+    - glibc-devel
+    - fontforge
+    - VirtualBox-5.2
+  deb_apt_repo_keys:
+    - oracle_vbox_2016.asc
+    - oracle_vbox.asc
+  deb_packages:
+    - virtualbox-5.2
+    - vagrant
+  vbox_user: vagrant
+

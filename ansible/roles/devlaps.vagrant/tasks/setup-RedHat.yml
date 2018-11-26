@@ -13,20 +13,7 @@
   yum:
     name: "{{item}}"
   loop:
-    - gcc
-    - dkms
-    - make
-    - qt
-    - libgomp
-    - patch
-    - kernel-headers
-    - kernel-devel
-    - kernel-devel-3.10.0-862.el7
-    - binutils
-    - glibc-headers
-    - glibc-devel
-    - fontforge
-    - VirtualBox-5.2
+    "{{ devlaps_vagrant.redhat_packages }}"
 
 - name: Download vagrant RPM
   get_url:

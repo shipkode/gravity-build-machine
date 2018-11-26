@@ -6,32 +6,34 @@
 - name: Download apt repo keys
   get_url:
     url: "https://www.virtualbox.org/download/{{ item }}.asc"
-    dest: "/home/vagrant/{{ item }}.asc"
+    dest: "/home/vagrant/{{ item }}"
     mode: 0644
   loop:
-    - oracle_vbox_2016
-    - oracle_vbox
+    "{{ devlaps_vagrant.deb_apt_repo_keys }}"
+
 - name: Install repo keys.
   apt_key:
     data: "{{ lookup('file', 'oracle_vbox_2016.asc') }}"
     state: present
+
 - name: Install repo key.
   apt_key:
     data: "{{ lookup('file', 'oracle_vbox.asc') }}"
     state: present
+
 - name: Add virtualbox apt repo.
   apt_repository:
     repo: deb http://download.virtualbox.org/virtualbox/debian bionic contrib
     state: present
+
 - name: Clean up asc files
   file:
     path: "/home/vagrant/{{ item }}"
     state: absent
   loop:
-    - oracle_vbox_2016.asc
-    - oracle_vbox.asc
+    "{{ devlaps_vagrant.deb_apt_repo_keys }}"
 
 - name: Install virtualbox and vagrant packages.
   apt:
-    name: "{{ packages }}"
+    name: "{{ devlaps_vagrant.deb_packages }}"
     update_cache: yes

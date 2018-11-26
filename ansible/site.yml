@@ -6,9 +6,6 @@
     PATH: /home/vagrant/.pyenv/bin:{{ ansible_env.PATH }}
   vars:
     debug: False
-    packages:
-      - virtualbox-5.2
-      - vagrant
   roles:
     - role: common
     - role: ahuffman.resolv
@@ -22,6 +19,9 @@
     - role: geerlingguy.docker
       docker_users:
         - vagrant
-        - dlapsley
+        # If you are using a bare metal server, add the ansible user name
+        # here. This use must have sudo privileges.
+        # - dlapsley
     - role: freedomofpress.docker-registry
     - role: devlaps.vagrant
+      vbox_user: dlapsley

@@ -13,7 +13,7 @@
 
 - name: Add user to vbox group
   user:
-    name: dlapsley
+    name: "{{ vagrant_devlaps.vbox_user }}"
     groups: vboxusers
     append: yes
 
