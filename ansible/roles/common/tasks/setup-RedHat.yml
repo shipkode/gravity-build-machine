@@ -7,7 +7,7 @@
 - name: Install required packages
   yum:
     name: "{{item}}"
-  with_items:
+  loop:
     - curl
     - htop
     - iotop

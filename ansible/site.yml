@@ -6,8 +6,11 @@
     PATH: /home/vagrant/.pyenv/bin:{{ ansible_env.PATH }}
   vars:
     debug: False
+    packages:
+      - virtualbox-5.2
+      - vagrant
   roles:
-    - common
+    - role: common
     - role: ahuffman.resolv
       resolv_nameservers:
         - 8.8.8.8
@@ -19,4 +22,6 @@
     - role: geerlingguy.docker
       docker_users:
         - vagrant
-    - freedomofpress.docker-registry
+        - dlapsley
+    - role: freedomofpress.docker-registry
+    - role: devlaps.vagrant

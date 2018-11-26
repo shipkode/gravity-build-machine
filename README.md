@@ -77,6 +77,9 @@ ansible/thor\_inventory.example then do the following:
     $ mv thor_inventory.example my_inventory.txt
     $ ansible-playbook -i my_inventory.txt site.yml --ask-pass --ask-become-pass
 
+You will also need to add your username to the list of docker\_users in
+ansible/site.yml.
+
 ## License
 
 [Apache Software License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
