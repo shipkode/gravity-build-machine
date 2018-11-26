@@ -1,0 +1,11 @@
+---
+# From vagrant-provision.yml
+- name: Enable epel-release
+  yum:
+    name: epel-release
+
+- name: Install required packages
+  yum:
+    name: "{{item}}"
+  loop:
+    "{{ devlaps_common.redhat_packages }}"

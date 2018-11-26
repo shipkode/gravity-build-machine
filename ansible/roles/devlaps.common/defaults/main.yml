@@ -1,13 +1,7 @@
 ---
-# From vagrant-provision.yml
-- name: Enable epel-release
-  yum:
-    name: epel-release
-
-- name: Install required packages
-  yum:
-    name: "{{item}}"
-  loop:
+# defaults file for devlaps.common.
+devlaps_common:
+  redhat_packages:
     - curl
     - htop
     - iotop
@@ -23,15 +17,15 @@
     - ntp
     - traceroute
     - e4fsprogs
-
-# From docker-build-machine
-- name: Install pre-reqs
-  yum:
-    name: "{{ item }}"
-    state: present
-  loop:
     - python-pip
     - kernel-devel # linux-headers-4.15.0-36-generic
     - "@Development tools" # build-essential
     - dkms
     - unzip
+  deb_packages:
+    - python-pip
+    - linux-headers-4.15.0-36-generic
+    - build-essential
+    - dkms
+    - unzip
+  docker_pip_package: docker
