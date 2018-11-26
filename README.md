@@ -28,7 +28,7 @@ install the pre-requisites described below.
 
 To clone this repo, use the following command:
 
-    git clone git@github.com:shipkode/docker-build-machine.git
+    git clone git@github.com:shipkode/gravity-build-machine.git
 
 At this point, you are ready to get started!
 
