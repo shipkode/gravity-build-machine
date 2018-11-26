@@ -15,7 +15,7 @@ Role Variables
 
 Available variables are listed below, along with default values (see defaults/main.yml).
 
-   vbox_user: vagrant
+    vbox_user: vagrant
    
 
 Dependencies
