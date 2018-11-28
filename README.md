@@ -21,8 +21,18 @@ install the pre-requisites described below.
 ### Installing pre-requisites
 
 * [Virtualbox](https://www.virtualbox.org/) ([download](https://www.virtualbox.org/wiki/Downloads)|[install](https://www.virtualbox.org/manual/ch02.html#idm861))
-* [Vagrant](https://www.vagrantup.com) ([download](https://www.vagrantup.com/downloads.html)|[install](https://www.vagrantup.com/docs/installation/))
+* [Vagrant](https://www.vagrantup.com) ([download](https://www.vagrantup.com/downloads.html)|[install](https://www.vagrantup.com/docs/installation/)). Note: you will need version 2.2.2 or greater.
 * [Ansible](https://www.ansible.com/) ([install](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html))
+
+
+### Installing vagrant plugins
+
+With certain versions of vagrant, it is possible to run into issues installing
+vagrant plugins. We recommend you install these two plugins once you have
+installed vagrant:
+
+     $ vagrant plugin install vagrant-disksize
+     $ vagrant plugin install vagrant-vbguest
 
 ### Checking out the code
 

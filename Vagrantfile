@@ -129,7 +129,8 @@ def provision(cluster_config)
         _retry = false
         required_plugins.each do |plugin|
             unless Vagrant.has_plugin? plugin
-                system "vagrant plugin install #{plugin}"
+                # Hit this problem: https://github.com/hashicorp/vagrant/issues/9972
+                system("vagrant plugin install #{plugin}", :chdir=>"/tmp") || exit!
                 _retry=true
             end
         end
